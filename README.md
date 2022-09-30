@@ -3,7 +3,6 @@ This is a spring boot application using spring security to create login / regist
 
 ## About
 - This is a basic authentication app using spring boot, spring security, angular and MySQL
+- Basic Authentication (Username and Password login)
 - Allow users to login and register via angular UI
 - Encrypt password using BCrypt to store in MySQL Database.
-- Basic Authentication (Username and Password login)
-- No Token request.
