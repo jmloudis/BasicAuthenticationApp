@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BasicAuthenticationApp.iml" filepath="$PROJECT_DIR$/.idea/BasicAuthenticationApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BE/NewSpringSecurityProject.iml" filepath="$PROJECT_DIR$/BE/NewSpringSecurityProject.iml" />
+    </modules>
+  </component>
+</project>
