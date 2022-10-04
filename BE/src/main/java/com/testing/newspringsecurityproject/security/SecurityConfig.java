@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .authorizeRequests()
                 .antMatchers().hasRole("USER") // "ROLE_" is automatically inserted "ROLE_USER"
                 .antMatchers().hasRole("ADMIN") //"ROLE_ADMIN"
-                .antMatchers("/login", "/home").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
