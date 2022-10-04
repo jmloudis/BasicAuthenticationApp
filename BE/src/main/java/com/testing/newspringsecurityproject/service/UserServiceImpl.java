@@ -46,4 +46,20 @@ public class UserServiceImpl implements UserDetailsService
             return userPrincipal;
         }
     }
+
+    public User register(String username, String password)
+    {
+        User user = new User();
+        user.setPassword( encodePassword(password));
+        user.setUsername(username);
+        user.setRole("ROLE_USER");
+        user.setEnabled(true);
+        this.userRepository.save(user);
+        return user;
+    }
+
+    private String encodePassword(String password)
+    {
+        return bCryptPasswordEncoder.encode(password);
+    }
 }

@@ -3,6 +3,7 @@ package com.testing.newspringsecurityproject.controller;
 import com.testing.newspringsecurityproject.model.User;
 import com.testing.newspringsecurityproject.model.UserPrincipal;
 import com.testing.newspringsecurityproject.repo.UserRepo;
+import com.testing.newspringsecurityproject.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,18 @@ public class AuthController
 
     private UserRepo userRepository;
 
+    private UserServiceImpl userService;
+
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    public AuthController(UserRepo userRepository, AuthenticationManager authenticationManager) {
+    public AuthController(UserRepo userRepository, UserServiceImpl userService, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
+        this.userService = userService;
         this.authenticationManager = authenticationManager;
     }
+
+    @Autowired
+
 
     @GetMapping("/home")
     public String showUser()
@@ -41,6 +47,13 @@ public class AuthController
         authenticate(user.getUsername(), user.getPassword());
         User loginUser = userRepository.findUserByUsername(user.getUsername());
         return new ResponseEntity<>(loginUser, OK);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> registerUser(@RequestBody User user)
+    {
+        User registerUser = userService.register(user.getUsername(), user.getPassword());
+        return new ResponseEntity<>(registerUser, OK);
     }
 
     private void authenticate(String username, String password) {
